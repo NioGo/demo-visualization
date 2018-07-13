@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>div show image</title>
+	<meta charset="utf-8">
+	<style type="text/css">
+		#header{
+			align-content: center;
+			width: 1024px;
+			border: 1px dashed yellow;
+			animation: 
+		}
+		#left{
+			background-color: grey;
+			color: white;
+			width: 512px;
+			height: 512px;
+			float: left;
+			border: 1px solid yellow;
+		}
+		#right{
+			background-color: grey;
+			color: white;
+			width: 512px;
+			height: 512px;
+			float: left;
+			border: 1px solid red;
+		}
+		#other{
+			clear: both;
+		}
+		#in{
+			height: 35px;
+			width: 110px;
+			background-color: orange;
+			font-weight: 500;
+			border-radius: 10px;
+			font-size: medium;
+		}
+	</style>
+	<script type="text/javascript">
+		function show1(){
+			var h = document.getElementById("left");
+			h.innerHTML = "<img src='test.jpg' title='origin image'>";
+		}
+		function show2(){
+			var h = document.getElementById("right");
+			h.innerHTML = "<img src='test_grey.jpg' title='gray processing result'>";
+			document.getElementById("selc").selectedIndex = 0;
+			document.getElementById("info").innerHTML = "";
+		}
+		function changeInfo(){
+			var h = document.getElementById("info");
+			var s = document.getElementById("selc").value;
+			if(s == "opencv"){
+				document.getElementById("right").innerHTML = "<img src='binary.jpg' title='binary'>";
+				h.innerHTML = s;
+			}
+			else
+				h.innerHTML = s;
+		}
+
+		function onmouseOver(){
+			document.bn.src = "mouse2.jpg";
+		}
+		function onmouseOut(){
+			document.bn.src = "mouse1.jpg";
+		}
+	</script>
+
+</head>
+<body>
+	<div id="header">
+		<center><h1>图像处理实例</h1></center>
+	</div>
+	
+	<div id="left">原图显示</div>
+	<div id="right">结果显示</div>
+	<div id="other">
+		<script type="text/javascript">
+			for(var i=0; i<268; ++i)
+				document.write('.');
+		</script>
+		<br>
+		<form>
+			<input type="button" name="origin" value="显示原图" onclick="show1()" id="in">
+			<input type="button" name="grey" value="显示灰度图" onclick="show2()" id="in">
+			<select id="selc" name="selc" onchange="changeInfo()">
+				<option value="volvo" selected="selected">Volvo</option>
+				<option value="saab">Saab</option>
+				<option value="opel">Opel</option>
+				<option value="audi">Audi</option>
+				<option value="opencv">opencv</option>
+			</select>
+		</form>
+
+
+	</div>
+	<div id="info"></div>
+	<abbr title="Hello World We Can">HWWC</abbr>
+	<br>
+	<a href="http://www.baidu.com">
+		<img src="mouse1.jpg" name="bn" onmouseover="onmouseOver()" onmouseout="onmouseOut()" title="百度一下">
+	</a>
+</html>
